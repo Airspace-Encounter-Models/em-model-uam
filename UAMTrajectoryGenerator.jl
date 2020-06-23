@@ -180,8 +180,8 @@ function generate_trajectory_file(τ::UAM_TRAJECTORY, filename::String, num_traj
 		generate_trajectory!(τ)
 		traj = get_trajectory(τ)
 		times = [times; collect(range(0, step = τ.dt, length = length(traj.p[:,1])))]
-		xs = [xs; traj.p[:,1]].*m2ft
-		ys = [ys; traj.p[:,2]].*m2ft
+		xs = [xs; traj.p[:,1].*m2ft]
+		ys = [ys; traj.p[:,2].*m2ft]
 		zs = [zs; traj.p[:,3]]
 	end
 	df = DataFrame(time_s = times, x_ft = xs, y_ft = ys, z_ft = zs)
@@ -198,8 +198,8 @@ function generate_trajectory_file(filename::String, num_trajs::Int64)
 		generate_trajectory!(τ)
 		traj = get_trajectory(τ)
 		times = [times; collect(range(0, step = τ.dt, length = length(traj.p[:,1])))]
-		xs = [xs; traj.p[:,1]].*m2ft
-		ys = [ys; traj.p[:,2]].*m2ft
+		xs = [xs; traj.p[:,1].*m2ft]
+		ys = [ys; traj.p[:,2].*m2ft]
 		zs = [zs; traj.p[:,3]]
 	end
 	df = DataFrame(time_s = times, x_ft = xs, y_ft = ys, z_ft = zs)
